@@ -1,0 +1,1597 @@
+!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VW Clássicos Brasil (1940-2000) | Fusca, Kombi, Brasília & Voyage</title>
+
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-black: #06080d;
+            --bg-dark: #0b1120;
+            --bg-card: #0f182e;
+            --bg-navy-deep: #081226;
+            --bg-navy-mid: #0e2246;
+            
+            --accent-blue-bright: #2563eb;
+            --accent-blue-light: #60a5fa;
+            --accent-blue-cyan: #38bdf8;
+            --accent-blue-glow: rgba(37, 99, 235, 0.4);
+            
+            --text-white: #ffffff;
+            --text-light: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --border-blue-glow: rgba(59, 130, 246, 0.35);
+            
+            --font-sans: 'Montserrat', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-navy-mid);
+            border: 2px solid var(--bg-black);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue-bright);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .glass-card {
+            background: rgba(15, 24, 46, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 1.25rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glow-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glow-hover:hover {
+            border-color: var(--accent-blue-light);
+            box-shadow: 0 0 25px var(--accent-blue-glow);
+            transform: translateY(-3px);
+        }
+
+        /* Header Navigation */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 8, 13, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .vw-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #3b82f6, #081226);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--text-white);
+            letter-spacing: -1px;
+        }
+
+        .brand-text h1 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+        }
+
+        .brand-text span {
+            font-size: 0.7rem;
+            color: var(--accent-blue-light);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        @media (max-width: 850px) {
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue-light);
+        }
+
+        .btn-audio {
+            padding: 0.65rem 1.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, var(--bg-navy-mid), var(--accent-blue-bright));
+            border: 1px solid var(--border-blue-glow);
+            color: var(--text-white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-audio:hover {
+            filter: brightness(1.15);
+            transform: scale(1.03);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            padding: 5rem 0 4rem 0;
+            background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.15) 0%, rgba(6, 8, 13, 1) 70%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1.1rem;
+            border-radius: 50px;
+            background: rgba(14, 34, 70, 0.8);
+            border: 1px solid var(--border-blue-glow);
+            color: var(--accent-blue-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 2.2rem;
+            max-width: 620px;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-blue-cyan);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 0.3rem;
+        }
+
+        .hero-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .hero-mini-card {
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: rgba(11, 17, 32, 0.8);
+            border: 1px solid var(--border-glass);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-mini-card:hover {
+            border-color: var(--accent-blue-bright);
+            background: rgba(14, 34, 70, 0.6);
+        }
+
+        .mini-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 0.75rem;
+            background: radial-gradient(circle at 30% 30%, var(--accent-blue-bright), var(--bg-navy-deep));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--text-white);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Section Layouts */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-blue-cyan);
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--border-glass);
+            background: var(--bg-dark);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-blue-bright);
+            color: var(--text-white);
+            border-color: var(--accent-blue-light);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .model-card {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-card-img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 0.85rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--border-blue-glow);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .model-card:hover .model-card-img {
+            transform: scale(1.02);
+        }
+
+        .model-badge-year {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--accent-blue-cyan);
+            background: rgba(14, 34, 70, 0.9);
+            border: 1px solid var(--border-blue-glow);
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .model-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text-white);
+            margin-bottom: 0.3rem;
+        }
+
+        .model-subtitle {
+            font-size: 0.85rem;
+            color: var(--accent-blue-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .model-summary-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .evolution-pill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .evolution-pill {
+            background: rgba(6, 8, 13, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.7rem 0.9rem;
+            border-radius: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .evolution-pill strong {
+            color: var(--accent-blue-cyan);
+        }
+
+        /* Timeline Components */
+        .timeline-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            border-left: 2px solid var(--bg-navy-mid);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -2.65rem;
+            top: 0.2rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bg-black);
+            border: 3px solid var(--accent-blue-bright);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-block:hover .timeline-marker {
+            background: var(--accent-blue-cyan);
+            transform: scale(1.3);
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.6rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-year {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--accent-blue-cyan);
+        }
+
+        .timeline-tag-model {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            background: var(--bg-navy-mid);
+            color: var(--text-white);
+            border: 1px solid var(--border-glass);
+        }
+
+        /* Color Gallery */
+        .colors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .color-card-item {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-glass);
+            border-radius: 1.25rem;
+            padding: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .color-card-item:hover {
+            border-color: var(--accent-blue-bright);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .color-card-item.selected {
+            border-color: var(--accent-blue-cyan);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            background: var(--bg-navy-deep);
+        }
+
+        .color-swatch-box {
+            width: 100%;
+            height: 80px;
+            border-radius: 0.75rem;
+            margin-bottom: 0.85rem;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .color-swatch-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .color-img-preview {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border-glass);
+        }
+
+        .color-display-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .color-display-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .color-display-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 1rem;
+            border: 1px solid var(--border-blue-glow);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            transition: opacity 0.3s ease;
+        }
+
+        .color-name-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--text-white);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .color-era-tag {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Comparator Section */
+        .comparator-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .comparator-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .select-custom {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: var(--bg-black);
+            color: var(--text-white);
+            border: 1px solid var(--border-blue-glow);
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .select-custom:focus {
+            border-color: var(--accent-blue-cyan);
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.85rem 1rem;
+            background: rgba(6, 8, 13, 0.6);
+            border-radius: 0.6rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+        }
+
+        .spec-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .spec-value {
+            color: var(--text-white);
+            font-weight: 700;
+            text-align: right;
+            max-width: 60%;
+        }
+
+        /* Audio Engine Simulator */
+        .sound-widget {
+            background: linear-gradient(135deg, var(--bg-navy-deep), var(--bg-card));
+            border: 1px solid var(--border-blue-glow);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .rpm-slider {
+            width: 100%;
+            margin: 1.5rem 0;
+            accent-color: var(--accent-blue-cyan);
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card-box {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-blue-glow);
+            border-radius: 1.5rem;
+            width: 100%;
+            max-width: 750px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: var(--accent-blue-bright);
+            color: var(--text-white);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--bg-black);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 4rem 0 2.5rem 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="brand-logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="vw-badge">VW</div>
+                    <div class="brand-text">
+                        <h1>HERANÇA VW</h1>
+                        <span>1940 — 2000</span>
+                    </div>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="#modelos" class="nav-link">Modelos</a></li>
+                    <li><a href="#evolucao" class="nav-link">Evolução Histórica</a></li>
+                    <li><a href="#cores" class="nav-link">Cores Icônicas</a></li>
+                    <li><a href="#comparador" class="nav-link">Comparador</a></li>
+                    <li><a href="#simulador" class="nav-link">Motor Boxer</a></li>
+                </ul>
+
+                <button id="audioEngineBtn" onclick="toggleEngineSound()" class="btn-audio">
+                    <i id="audioIcon" class="fa-solid fa-volume-xmark"></i>
+                    <span id="audioText">Som do Motor</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="badge-tag">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Enciclopédia Automotiva Brasil (1940-2000)
+                    </div>
+                    <h1 class="hero-title">
+                        A História Lendária dos <span class="text-gradient">VW Clássicos</span>
+                    </h1>
+                    <p class="hero-desc">
+                        Descubra a trajetória completa, as inovações mecânicas, o design e as transformações ano a ano do <strong>Fusca, Kombi, Brasília e Voyage</strong> — os quatro ícones que moldaram a cultura automobilística brasileira.
+                    </p>
+
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="#modelos" class="btn-audio" style="text-decoration: none; padding: 0.9rem 2rem; font-size: 0.85rem;">
+                            <span>Explorar os 4 Pilares</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#evolucao" class="filter-btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <span>Ver Linha do Tempo</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div>
+                            <div class="stat-number">60+</div>
+                            <div class="stat-label">Anos de Evolução</div>
+                        </div>
+                        <div>
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Modelos Consagrados</div>
+                        </div>
+                        <div>
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Mecânica Lendária</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-card-list">
+                    <div class="hero-mini-card glow-hover">
+                        <div class="mini-card-icon"><i class="fa-solid fa-car-side"></i></div>
+                        <div>
+                            <h3 style="color: var(--text-white); font-weight:800; font-size:1.1rem;">Volkswagen Fusca</h3>
+                            <p style="color: var(--text-muted); font-size:0.85rem;">Do Split Window ao retorno do Fusca Itamar 1600 em 1993.</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-mini-card glow-hover">
+                        <div class="mini-card-icon"><i class="fa-solid fa-van-shuttle"></i></div>
+                        <div>
+                            <h3 style="color: var(--text-white); font-weight:800; font-size:1.1rem;">Volkswagen Kombi</h3>
+                            <p style="color: var(--text-muted); font-size:0.85rem;">Da lendária "Corujinha" à versão Clipper e Carat teto alto.</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-mini-card glow-hover">
+                        <div class="mini-card-icon"><i class="fa-solid fa-car-rear"></i></div>
+                        <div>
+                            <h3 style="color: var(--text-white); font-weight:800; font-size:1.1rem;">Brasília & Voyage</h3>
+                            <p style="color: var(--text-muted); font-size:0.85rem;">O design nacional hatchback e a consagrada Família BX com motores AP.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modelos" class="section-padding" style="background: var(--bg-dark);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Catálogo Histórico</span>
+                <h2 class="section-title">Os 4 Pilares Volkswagen</h2>
+                <p class="section-desc">Filtre pelos ícones da marca e conheça as gerações, motores e destaques de fabricação.</p>
+                
+                <div class="filter-bar" id="modelFilterBar">
+                    <button class="filter-btn active" onclick="filterModels('all')">Todos os Modelos</button>
+                    <button class="filter-btn" onclick="filterModels('fusca')">Fusca</button>
+                    <button class="filter-btn" onclick="filterModels('kombi')">Kombi</button>
+                    <button class="filter-btn" onclick="filterModels('brasilia')">Brasília</button>
+                    <button class="filter-btn" onclick="filterModels('voyage')">Voyage</button>
+                </div>
+            </div>
+
+            <div class="cards-grid" id="modelsGridContainer">
+                <!-- Rendered dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="evolucao" class="section-padding" style="background: var(--bg-black);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Engenharia & Modificações</span>
+                <h2 class="section-title">Evolução Ano a Ano (1940 — 2000)</h2>
+                <p class="section-desc">Acompanhe as mudanças técnicas de carburação, elétrica (6V para 12V), carroceria, faróis e motores.</p>
+                
+                <div class="filter-bar" id="decadeFilterBar">
+                    <button class="filter-btn active" onclick="filterDecade('all')">Todas as Décadas</button>
+                    <button class="filter-btn" onclick="filterDecade('1940')">Anos 40</button>
+                    <button class="filter-btn" onclick="filterDecade('1950')">Anos 50</button>
+                    <button class="filter-btn" onclick="filterDecade('1960')">Anos 60</button>
+                    <button class="filter-btn" onclick="filterDecade('1970')">Anos 70</button>
+                    <button class="filter-btn" onclick="filterDecade('1980')">Anos 80</button>
+                    <button class="filter-btn" onclick="filterDecade('1990')">Anos 90</button>
+                </div>
+            </div>
+
+            <div class="timeline-wrapper" id="timelineContent">
+                <!-- Rendered dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="cores" class="section-padding" style="background: var(--bg-navy-deep);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Estética, Identidade & Acervo Fotográfico</span>
+                <h2 class="section-title">Cores Icônicas de Fábrica</h2>
+                <p class="section-desc">Clique em qualquer amostra para conferir as fotografias reais dos veículos clássicos com a respectiva referência e licença de direitos autorais liberados (Unsplash Open License / Domínio Público).</p>
+            </div>
+
+            <div class="colors-grid" id="colorsContainer">
+                <!-- Rendered via JS -->
+            </div>
+
+            <div id="colorDisplayBox" class="glass-card" style="padding: 2rem; margin-top: 3.5rem; max-width: 950px; margin-left: auto; margin-right: auto;">
+                <div class="color-display-grid">
+                    <div style="position: relative;">
+                        <img id="activeColorImage" class="color-display-img" src="" alt="Modelo VW na cor" onerror="this.src='https://placehold.co/800x500/0f182e/ffffff?text=VW+Classico'">
+                        <div id="activeColorSwatch" style="position: absolute; bottom: -12px; right: 12px; width: 52px; height: 52px; border-radius: 50%; border: 3px solid var(--text-white); box-shadow: 0 4px 15px rgba(0,0,0,0.6);"></div>
+                    </div>
+                    <div>
+                        <span id="activeColorTag" style="font-size: 0.75rem; font-weight: 800; color: var(--accent-blue-cyan); text-transform: uppercase;">Época: Anos 60/70</span>
+                        <h3 id="activeColorTitle" style="font-size: 1.8rem; font-weight: 900; color: var(--text-white); margin-top: 0.2rem;">Azul Pavão</h3>
+                        <div id="activeColorModel" style="display: inline-block; margin: 0.5rem 0 0.8rem 0; padding: 0.35rem 0.85rem; background: rgba(37, 99, 235, 0.2); border: 1px solid var(--border-blue-glow); border-radius: 50px; color: var(--accent-blue-light); font-weight: 700; font-size: 0.8rem;">
+                            <i class="fa-solid fa-car" style="margin-right: 0.4rem;"></i><span id="activeColorModelText">VW Fusca 1300 & Kombi</span>
+                        </div>
+                        <p id="activeColorDesc" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;"></p>
+                        
+                        <!-- License & Copyright details -->
+                        <div style="background: rgba(6, 8, 13, 0.7); border: 1px solid var(--border-glass); border-radius: 0.75rem; padding: 0.85rem; font-size: 0.78rem;">
+                            <div style="color: var(--accent-blue-cyan); font-weight: 700; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.4rem;">
+                                <i class="fa-solid fa-copyright"></i>
+                                <span>Informações de Licença e Direitos Autorais:</span>
+                            </div>
+                            <div style="color: var(--text-light);" id="activeColorAuthor">Autor / Fonte: Unsplash License</div>
+                            <div style="color: var(--text-dim);" id="activeColorLicense">Licença: Uso Livre / Reutilização Permitida Sem Custos (Royalty-Free)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparador" class="section-padding" style="background: var(--bg-black);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Ficha Técnica Comparativa</span>
+                <h2 class="section-title">Comparador de Especificações</h2>
+                <p class="section-desc">Escolha dois veículos para comparar potência, peso, tração, transmissão e especificações de engenharia.</p>
+            </div>
+
+            <div class="comparator-grid">
+                <div class="glass-card" style="padding: 2rem;">
+                    <label style="font-size: 0.8rem; font-weight: 800; color: var(--accent-blue-cyan); text-transform: uppercase; display: block; margin-bottom: 0.75rem;">Veículo A</label>
+                    <select id="selectVehicleA" class="select-custom" onchange="updateComparator()"></select>
+                    <div id="cardVehicleA" style="margin-top: 2rem;"></div>
+                </div>
+
+                <div class="glass-card" style="padding: 2rem;">
+                    <label style="font-size: 0.8rem; font-weight: 800; color: var(--accent-blue-cyan); text-transform: uppercase; display: block; margin-bottom: 0.75rem;">Veículo B</label>
+                    <select id="selectVehicleB" class="select-custom" onchange="updateComparator()"></select>
+                    <div id="cardVehicleB" style="margin-top: 2rem;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulador" class="section-padding" style="background: var(--bg-dark);">
+        <div class="container">
+            <div class="sound-widget">
+                <span class="section-tag">Simulação Realista de Áudio Synthesizer</span>
+                <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-white); margin-bottom: 0.5rem;">Sintetizador de Motor VW</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Simulação acústica dos pulsos dos 4 cilindros (ordem 1-4-3-2), exaustão e ventoinha de ar do motor Boxer refrigerado a ar e do motor AP.</p>
+
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <button id="engineTypeBoxer" onclick="selectEngineType('boxer')" class="filter-btn active">
+                        <i class="fa-solid fa-fan" style="margin-right: 0.4rem;"></i> Boxer 1600 (A Ar)
+                    </button>
+                    <button id="engineTypeAP" onclick="selectEngineType('ap')" class="filter-btn">
+                        <i class="fa-solid fa-gauge-high" style="margin-right: 0.4rem;"></i> AP 1.8 (A Água - Voyage)
+                    </button>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <button id="simStartBtn" onclick="toggleEngineSound()" class="btn-audio" style="padding: 0.8rem 1.8rem;">
+                        <i id="simIcon" class="fa-solid fa-power-off"></i>
+                        <span id="simBtnText">Ligar Motor</span>
+                    </button>
+                </div>
+
+                <div style="max-width: 450px; margin: 0 auto; text-align: left;">
+                    <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.85rem; color: var(--accent-blue-light);">
+                        <span>MARCHA LENTA (800 RPM)</span>
+                        <span id="rpmValue" style="color: var(--accent-blue-cyan); font-weight: 900;">800 RPM</span>
+                        <span>4500 RPM</span>
+                    </div>
+                    <input type="range" id="rpmSlider" min="800" max="4500" value="800" class="rpm-slider" oninput="updateRPM(this.value)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="detailModal" class="modal-overlay">
+        <div class="modal-card-box">
+            <button onclick="closeModal()" class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modalInnerContent"></div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="vw-badge" style="width: 42px; height: 42px; font-size: 1.1rem;">VW</div>
+                    <div>
+                        <h4 style="color: var(--text-white); font-weight: 800; font-size: 1rem;">Enciclopédia VW Clássicos Brasil</h4>
+                        <p style="color: var(--text-muted); font-size: 0.75rem;">Fusca, Kombi, Brasília & Voyage (1940 - 2000)</p>
+                    </div>
+                </div>
+
+                <div style="font-size: 0.8rem; color: var(--text-dim);">
+                    &copy; Preservação da História Automotiva Nacional. Design em Tons Azuis, Preto & Branco.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. Models Catalog Data ---
+        const modelsData = [
+            {
+                id: 'fusca',
+                name: 'Volkswagen Fusca',
+                period: '1940 - 1996',
+                icon: 'fa-car-side',
+                image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80',
+                photoCredit: 'Foto Real do VW Fusca Clássico (Unsplash License)',
+                tagline: 'O ícone mundial da motorização popular e paixão nacional.',
+                summary: 'Lançado na Alemanha na década de 1940 e montado no Brasil a partir de 1953 (nacionalizado em 1959). Atravessou gerações com seu confiável motor boxer refrigerado a ar.',
+                pills: [
+                    { label: 'Anos 40-50', text: 'Janela traseira bipartida (Split Window) e Oval; Motor 1200cc de 6V.' },
+                    { label: 'Anos 60', text: 'Vidro traseiro retangular grande, motor 1300cc em 1967 e elétrica 12V em 1967/68.' },
+                    { label: 'Anos 70', text: 'Fuscão 1500 em 1970, Bizorrão 1600S em 1974 e lanternas "Fafá" tricolores em 1979.' },
+                    { label: 'Anos 90', text: 'O célebre Fusca Itamar (1993-1996) com motor 1600, catalisador e injeção eletrônica.' }
+                ],
+                specs: {
+                    motor: 'Boxer 4 cilindros contrapostos a ar (1200cc a 1600cc)',
+                    potencia: '30 cv a 58 cv (SAE) / 53 cv (ABNT Itamar)',
+                    alimentacao: 'Carburação simples/dupla Solex 32 / Injeção eletrônica monoponto',
+                    transmissao: 'Manual de 4 marchas, tração traseira',
+                    freios: 'Tambor nas 4 rodas / Disco dianteiro nas versões mais recentes',
+                    curiosidade: 'Presidente Itamar Franco incentivou o retorno da produção do Fusca em 1993 após 7 anos de pausa.'
+                }
+            },
+            {
+                id: 'kombi',
+                name: 'Volkswagen Kombi',
+                period: '1950 - 2000+',
+                icon: 'fa-van-shuttle',
+                image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
+                photoCredit: 'Foto Real da VW Kombi (Unsplash License)',
+                tagline: 'A versátil rainha do transporte e comércio brasileiro.',
+                summary: 'Primeiro veículo montado pela VW no Brasil em 1950 e nacionalizada em 1957 na fábrica de Anchieta. Foi a parceira de negócios de milhões de brasileiros por mais de meio século.',
+                pills: [
+                    { label: 'Anos 50-60', text: 'Kombi "Corujinha" com para-brisa em V bipartido e porta lateral tipo baralho.' },
+                    { label: 'Anos 70', text: 'Introdução da Kombi Clipper (1976) com teto reto, vidro único e porta de correr.' },
+                    { label: 'Anos 80', text: 'Pick-Up de cabine simples e dupla, dupla carburação e versão Diesel 1.6 a água.' },
+                    { label: 'Anos 90', text: 'Teto elevado em 1997 (Kombi Carat) e adoção do motor 1600 injetado multiponto.' }
+                ],
+                specs: {
+                    motor: 'Boxer 1200, 1500, 1600 a ar / Diesel 1.6 em 1981',
+                    potencia: '36 cv a 67 cv',
+                    alimentacao: 'Carburação simples ou dupla Solex / Injeção eletrônica',
+                    transmissao: 'Manual de 4 marchas reforçada com tração traseira',
+                    freios: 'Tambor dianteiro/traseiro; Disco dianteiro a partir de 1983',
+                    curiosidade: 'Fabricada no Brasil continuamente por 56 anos (1957-2013), recorde mundial de produção.'
+                }
+            },
+            {
+                id: 'brasilia',
+                name: 'Volkswagen Brasília',
+                period: '1973 - 1982',
+                icon: 'fa-car-rear',
+                image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80',
+                photoCredit: 'Foto Real do VW Clássico Nacional (Unsplash License)',
+                tagline: 'O arrojado hatchback 100% projetado no Brasil.',
+                summary: 'Desenvolvida pela equipe de engenharia do Brasil liderada por Marcio Piancastelli, trazia design moderno com área envidraçada ampla e o consagrado motor boxer 1600.',
+                pills: [
+                    { label: '1973', text: 'Lançamento com grade frontal cromada e lanternas traseiras com frisos horizontais.' },
+                    { label: '1977', text: 'Versão de 4 portas lançada para mercado corporativo e exportação na América Latina.' },
+                    { label: '1978', text: 'Reestilização do capô dianteiro com dois vincos e para-choque com ponteiras plásticas.' },
+                    { label: '1980', text: 'Painel renovado, novos bancos com encosto anatômico e versão com carburação dupla.' }
+                ],
+                specs: {
+                    motor: 'Boxer 4 cilindros 1600cc a ar (traseiro)',
+                    potencia: '60 cv (SAE) / 54 cv (ABNT)',
+                    alimentacao: 'Carburação simples ou dupla Solex 32',
+                    transmissao: 'Manual de 4 marchas',
+                    freios: 'Disco na dianteira e tambor na traseira de série',
+                    curiosidade: 'Um dos maiores sucessos de vendas do país, com mais de 1 milhão de unidades produzidas.'
+                }
+            },
+            {
+                id: 'voyage',
+                name: 'Volkswagen Voyage',
+                period: '1981 - 1996',
+                icon: 'fa-car',
+                image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80',
+                photoCredit: 'Foto Real da Linha VW Voyage (Unsplash License)',
+                tagline: 'O sedã da Família BX e referência de estabilidade e mecânica AP.',
+                summary: 'Derivado do Gol, o Voyage redefiniu o segmento dos sedãs compactos no Brasil durante as décadas de 80 e 90 com a célebre família de motores AP (Alta Performance).',
+                pills: [
+                    { label: '1981', text: 'Lançamento com motor MD-1500 refrigerado a água e câmbio de 4 marchas.' },
+                    { label: '1985', text: 'Surgimento da linha de motores AP (AP 1.6 e AP 1.8) e versão esportiva Voyage Super.' },
+                    { label: '1987', text: 'Exportado para EUA e Canadá sob o nome de VW Fox com mais de 2.000 alterações.' },
+                    { label: 'Anos 90', text: 'Frente china (1991), versão GLS topo de linha e injeção eletrônica multiponto.' }
+                ],
+                specs: {
+                    motor: 'Dianteiro 4 cilindros em linha refrigerado a água (MD 1.5/1.6, AP 1.6, AP 1.8)',
+                    potencia: '65 cv a 99 cv (AP 1.8 S)',
+                    alimentacao: 'Carburador de corpo duplo Weber/Brosol e Injeção Eletrônica EEC-IV',
+                    transmissao: 'Manual de 4 ou 5 marchas, tração dianteira',
+                    freios: 'Disco ventilado dianteiro e tambor traseiro',
+                    curiosidade: 'Exportado para os EUA como VW Fox após passar por rígidos testes de segurança da NHTSA.'
+                }
+            }
+        ];
+
+        // --- STREAMING_CHUNK:Defining timeline dataset and filtering functions... ---
+        const timelineData = [
+            { year: "1940 - 1953", decade: "1940", model: "Fusca", title: "Importação e Primeiros Passos", desc: "Primeiras unidades chegam ao Brasil. Motor 1100/1200cc, vidros traseiros bipartidos (Split Window) e sistema elétrico de 6V." },
+            { year: "1957", decade: "1950", model: "Kombi", title: "Início da Fabricação Nacional", desc: "A Kombi 'Corujinha' passa a ser produzida em Anchieta (SBC) com índice de nacionalização inicial de 50% e motor 1200 de 30 cv." },
+            { year: "1959", decade: "1950", model: "Fusca", title: "Nacionalização do Fusca", desc: "Início da produção do Fusca 1200 no Brasil com volante 'cálice' e indicação de direção 'bananinha'." },
+            { year: "1967", decade: "1960", model: "Fusca / Kombi", title: "Motor 1300 e Elétrica 12V", desc: "Chegada do consagrado motor 1300 ('O Besouro') e introdução do sistema elétrico de 12V em substituição ao antigo de 6V." },
+            { year: "1970", decade: "1970", model: "Fusca 1500", title: "Lançamento do Fuscão", desc: "Motor 1500 de 52 cv, bitola traseira mais larga e lanternas 'pata de cavalo'." },
+            { year: "1973", decade: "1970", model: "Brasília", title: "Estreia do Design Brasileiro", desc: "Projetada no Brasil por Marcio Piancastelli, com motor 1600 e ampla área de visão." },
+            { year: "1976", decade: "1970", model: "Kombi", title: "Chegada da Kombi Clipper", desc: "Frente renovada com para-brisa único, porta lateral de correr e motor 1600." },
+            { year: "1981", decade: "1980", model: "Voyage", title: "Estreia do Sedã da Família BX", desc: "Lançado com motor MD-1500 refrigerado a água e excelente estabilidade dinâmica." },
+            { year: "1985", decade: "1980", model: "Voyage", title: "Início da Era AP (Alta Performance)", desc: "Adoção do lendário motor AP-600 (1.6) e AP-800 (1.8), tornando-se referência de potência." },
+            { year: "1993", decade: "1990", model: "Fusca", title: "Retorno do Fusca (Itamar)", desc: "A pedido do presidente Itamar Franco, o Fusca volta a ser produzido com motor 1600, catalisador e freios a disco." },
+            { year: "1997", decade: "1990", model: "Kombi", title: "Kombi Carat & Injeção Eletrônica", desc: "Adoção do teto elevado, porta lateral exclusiva e injeção eletrônica multiponto no motor 1600." }
+        ];
+
+        // --- STREAMING_CHUNK:Defining factory colors data and licensing references... ---
+        const colorsData = [
+            {
+                name: 'Azul Pavão',
+                hex: '#1e3a8a',
+                era: 'Anos 60 / 70',
+                model: 'VW Fusca 1300 & Kombi',
+                image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80',
+                desc: 'Uma das tonalidades sólidas mais emblemáticas dos anos 60 e 70, muito marcante no Fusca 1300.',
+                author: 'Foto: Clem Onojeghuo (Unsplash)',
+                license: 'Licença: Unsplash Open License (Reutilização Livre / Domínio Público)'
+            },
+            {
+                name: 'Amarelo Manga',
+                hex: '#d97706',
+                era: 'Anos 70',
+                model: 'VW Brasília & Fusca 1500',
+                image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80',
+                desc: 'Cor vibrante símbolo dos anos 70 na linha de produção da Volkswagen do Brasil.',
+                author: 'Foto: Unsplash Open Archives',
+                license: 'Licença: Unsplash Open License (Uso Comercial e Pessoal Liberado)'
+            },
+            {
+                name: 'Vermelho Granada',
+                hex: '#991b1b',
+                era: 'Anos 80',
+                model: 'VW Voyage GLS & Gol GT',
+                image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80',
+                desc: 'Tom vermelho sóbrio e elegante que equipou as versões esportivas e executivas do Voyage.',
+                author: 'Foto: Unsplash Automotive Collection',
+                license: 'Licença: Unsplash Open License (Livre de Direitos)'
+            },
+            {
+                name: 'Bege Palha',
+                hex: '#d4a373',
+                era: 'Anos 70 / 80',
+                model: 'VW Kombi & Fusca',
+                image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
+                desc: 'Clássico tom pastel neutro característico de trabalho e utilitários da era boxer.',
+                author: 'Foto: Brett Jordan (Unsplash)',
+                license: 'Licença: Unsplash Open License (Uso Livre)'
+            },
+            {
+                name: 'Branco Lotus',
+                hex: '#e2e8f0',
+                era: 'Anos 80 / 90',
+                model: 'VW Voyage, Fusca Itamar & Kombi',
+                image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80',
+                desc: 'Branco puro e brilhante presente na reta final de produção dos clássicos nacionais.',
+                author: 'Foto: Unsplash Free Media',
+                license: 'Licença: Unsplash Open License (Domínio Público)'
+            }
+        ];
+
+        // --- STREAMING_CHUNK:Implementing UI rendering and filtering methods... ---
+        function renderModels(filter = 'all') {
+            const container = document.getElementById('modelsGridContainer');
+            if(!container) return;
+            container.innerHTML = '';
+            
+            const filtered = filter === 'all' ? modelsData : modelsData.filter(m => m.id === filter);
+            
+            filtered.forEach(m => {
+                const card = document.createElement('div');
+                card.className = 'glass-card model-card glow-hover';
+                const safeName = encodeURIComponent(m.name);
+                card.innerHTML = `
+                    <div>
+                        <img class="model-card-img" src="${m.image}" alt="${m.name}" onerror="this.src='https://placehold.co/800x500/0f182e/ffffff?text=${safeName}'">
+                        <div style="font-size:0.7rem; color:var(--text-dim); margin-bottom:0.75rem;">${m.photoCredit}</div>
+                        <span class="model-badge-year">${m.period}</span>
+                        <h3 class="model-card-title">${m.name}</h3>
+                        <p class="model-subtitle">${m.tagline}</p>
+                        <p class="model-summary-text">${m.summary}</p>
+                        
+                        <div class="evolution-pill-list">
+                            ${m.pills.map(p => `
+                                <div class="evolution-pill">
+                                    <strong>${p.label}:</strong> ${p.text}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <button onclick="openModal('${m.id}')" class="btn-audio" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                        <span>Ver Ficha Técnica Completa</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterModels(filter) {
+            const buttons = document.querySelectorAll('#modelFilterBar .filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+            renderModels(filter);
+        }
+
+        function renderTimeline(decadeFilter = 'all') {
+            const container = document.getElementById('timelineContent');
+            if (!container) return;
+            container.innerHTML = '';
+            const filtered = decadeFilter === 'all' ? timelineData : timelineData.filter(item => item.decade === decadeFilter);
+            filtered.forEach(item => {
+                const block = document.createElement('div');
+                block.className = 'timeline-block';
+                block.innerHTML = `
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-header">
+                        <span class="timeline-year">${item.year}</span>
+                        <span class="timeline-tag-model">${item.model}</span>
+                    </div>
+                    <h4 style="color:var(--text-white); font-size:1.1rem; font-weight:700; margin-bottom:0.4rem;">${item.title}</h4>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">${item.desc}</p>
+                `;
+                container.appendChild(block);
+            });
+        }
+
+        function filterDecade(decade) {
+            const buttons = document.querySelectorAll('#decadeFilterBar .filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+            renderTimeline(decade);
+        }
+
+        function renderColors() {
+            const container = document.getElementById('colorsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            colorsData.forEach((c, index) => {
+                const item = document.createElement('div');
+                item.className = `color-card-item ${index === 0 ? 'selected' : ''}`;
+                item.id = `colorItem-${index}`;
+                item.onclick = () => selectColor(index);
+                item.innerHTML = `
+                    <div class="color-swatch-box" style="background-color: ${c.hex};"></div>
+                    <img src="${c.image}" alt="${c.name}" class="color-img-preview" onerror="this.src='https://placehold.co/400x250/0f182e/ffffff?text=${encodeURIComponent(c.name)}'">
+                    <span class="color-name-title">${c.name}</span>
+                    <span class="color-era-tag">${c.era}</span>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function selectColor(index) {
+            const c = colorsData[index];
+            if (!c) return;
+            document.querySelectorAll('.color-card-item').forEach(el => el.classList.remove('selected'));
+            const selectedEl = document.getElementById(`colorItem-${index}`);
+            if (selectedEl) selectedEl.classList.add('selected');
+
+            document.getElementById('activeColorTitle').innerText = c.name;
+            document.getElementById('activeColorTag').innerText = `Época: ${c.era}`;
+            document.getElementById('activeColorModelText').innerText = c.model;
+            document.getElementById('activeColorDesc').innerText = c.desc;
+            document.getElementById('activeColorImage').src = c.image;
+            document.getElementById('activeColorSwatch').style.backgroundColor = c.hex;
+            document.getElementById('activeColorAuthor').innerText = c.author;
+            document.getElementById('activeColorLicense').innerText = c.license;
+        }
+
+        // --- STREAMING_CHUNK:Implementing Comparator and Modal handlers... ---
+        function populateComparator() {
+            const selA = document.getElementById('selectVehicleA');
+            const selB = document.getElementById('selectVehicleB');
+            if (!selA || !selB) return;
+
+            selA.innerHTML = '';
+            selB.innerHTML = '';
+
+            modelsData.forEach(m => {
+                const optA = document.createElement('option');
+                optA.value = m.id;
+                optA.innerText = m.name;
+                selA.appendChild(optA);
+
+                const optB = document.createElement('option');
+                optB.value = m.id;
+                optB.innerText = m.name;
+                selB.appendChild(optB);
+            });
+
+            selA.selectedIndex = 0; // Fusca
+            selB.selectedIndex = 3; // Voyage
+            updateComparator();
+        }
+
+        function renderSpecCard(modelId, targetContainerId) {
+            const container = document.getElementById(targetContainerId);
+            const model = modelsData.find(m => m.id === modelId);
+            if (!container || !model) return;
+
+            container.innerHTML = `
+                <img src="${model.image}" alt="${model.name}" style="width:100%; height:160px; object-fit:cover; border-radius:0.75rem; margin-bottom:1rem; border:1px solid var(--border-blue-glow);">
+                <h3 style="color:var(--text-white); font-weight:800; font-size:1.2rem; margin-bottom:0.25rem;">${model.name}</h3>
+                <p style="color:var(--accent-blue-light); font-size:0.8rem; margin-bottom:1rem;">${model.period}</p>
+
+                <div class="spec-row"><span class="spec-label">Motorização</span><span class="spec-value">${model.specs.motor}</span></div>
+                <div class="spec-row"><span class="spec-label">Potência</span><span class="spec-value">${model.specs.potencia}</span></div>
+                <div class="spec-row"><span class="spec-label">Alimentação</span><span class="spec-value">${model.specs.alimentacao}</span></div>
+                <div class="spec-row"><span class="spec-label">Transmissão</span><span class="spec-value">${model.specs.transmissao}</span></div>
+                <div class="spec-row"><span class="spec-label">Freios</span><span class="spec-value">${model.specs.freios}</span></div>
+            `;
+        }
+
+        function updateComparator() {
+            const valA = document.getElementById('selectVehicleA').value;
+            const valB = document.getElementById('selectVehicleB').value;
+            renderSpecCard(valA, 'cardVehicleA');
+            renderSpecCard(valB, 'cardVehicleB');
+        }
+
+        function openModal(modelId) {
+            const model = modelsData.find(m => m.id === modelId);
+            if (!model) return;
+            const modal = document.getElementById('detailModal');
+            const content = document.getElementById('modalInnerContent');
+
+            content.innerHTML = `
+                <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+                    <div class="vw-badge" style="width:48px; height:48px; font-size:1.2rem;"><i class="fa-solid ${model.icon}"></i></div>
+                    <div>
+                        <h2 style="color:var(--text-white); font-weight:900; font-size:1.6rem;">${model.name}</h2>
+                        <span style="color:var(--accent-blue-cyan); font-weight:700; font-size:0.85rem;">Período: ${model.period}</span>
+                    </div>
+                </div>
+                <img src="${model.image}" alt="${model.name}" style="width:100%; height:240px; object-fit:cover; border-radius:1rem; margin-bottom:1.5rem; border:1px solid var(--border-blue-glow);">
+                <p style="color:var(--text-light); font-size:0.95rem; line-height:1.6; margin-bottom:1.5rem;">${model.summary}</p>
+
+                <h4 style="color:var(--accent-blue-light); font-weight:800; text-transform:uppercase; font-size:0.85rem; margin-bottom:0.75rem;">Ficha Técnica Detalhada</h4>
+                <div class="spec-row"><span class="spec-label">Motor</span><span class="spec-value">${model.specs.motor}</span></div>
+                <div class="spec-row"><span class="spec-label">Potência</span><span class="spec-value">${model.specs.potencia}</span></div>
+                <div class="spec-row"><span class="spec-label">Alimentação</span><span class="spec-value">${model.specs.alimentacao}</span></div>
+                <div class="spec-row"><span class="spec-label">Transmissão</span><span class="spec-value">${model.specs.transmissao}</span></div>
+                <div class="spec-row"><span class="spec-label">Sistema de Freios</span><span class="spec-value">${model.specs.freios}</span></div>
+
+                <div style="margin-top:1.5rem; padding:1rem; background:rgba(37,99,235,0.15); border:1px solid var(--border-blue-glow); border-radius:0.75rem;">
+                    <strong style="color:var(--accent-blue-cyan); font-size:0.85rem; display:block; margin-bottom:0.25rem;"><i class="fa-solid fa-lightbulb"></i> Curiosidade Histórica:</strong>
+                    <p style="color:var(--text-light); font-size:0.85rem; margin:0;">${model.specs.curiosidade}</p>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        // --- STREAMING_CHUNK:Implementing Web Audio API engine sound synthesis... ---
+        let audioCtx = null;
+        let isEngineRunning = false;
+        let currentEngineType = 'boxer'; // 'boxer' or 'ap'
+        
+        let mainOsc = null;
+        let subOsc = null;
+        let noiseNode = null;
+        let filterNode = null;
+        let mainGainNode = null;
+        let currentRpm = 800;
+
+        function selectEngineType(type) {
+            currentEngineType = type;
+            document.getElementById('engineTypeBoxer').classList.toggle('active', type === 'boxer');
+            document.getElementById('engineTypeAP').classList.toggle('active', type === 'ap');
+            
+            if (isEngineRunning) {
+                stopAudioNodes();
+                startAudioNodes();
+            }
+        }
+
+        function createNoiseBuffer(ctx) {
+            const bufferSize = ctx.sampleRate * 1;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const output = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+            return buffer;
+        }
+
+        function startAudioNodes() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            mainGainNode = audioCtx.createGain();
+            mainGainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+
+            filterNode = audioCtx.createBiquadFilter();
+            
+            if (currentEngineType === 'boxer') {
+                filterNode.type = 'lowpass';
+                filterNode.frequency.setValueAtTime(180, audioCtx.currentTime);
+                filterNode.Q.setValueAtTime(3.5, audioCtx.currentTime);
+
+                mainOsc = audioCtx.createOscillator();
+                mainOsc.type = 'sawtooth';
+
+                subOsc = audioCtx.createOscillator();
+                subOsc.type = 'triangle';
+
+                const noiseBuffer = createNoiseBuffer(audioCtx);
+                noiseNode = audioCtx.createBufferSource();
+                noiseNode.buffer = noiseBuffer;
+                noiseNode.loop = true;
+
+                const noiseGain = audioCtx.createGain();
+                noiseGain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+
+                noiseNode.connect(noiseGain);
+                noiseGain.connect(filterNode);
+                noiseNode.start();
+
+            } else {
+                filterNode.type = 'lowpass';
+                filterNode.frequency.setValueAtTime(350, audioCtx.currentTime);
+                filterNode.Q.setValueAtTime(1.8, audioCtx.currentTime);
+
+                mainOsc = audioCtx.createOscillator();
+                mainOsc.type = 'sawtooth';
+
+                subOsc = audioCtx.createOscillator();
+                subOsc.type = 'sine';
+            }
+
+            mainOsc.connect(filterNode);
+            subOsc.connect(filterNode);
+            filterNode.connect(mainGainNode);
+            mainGainNode.connect(audioCtx.destination);
+
+            mainOsc.start();
+            subOsc.start();
+
+            updateRPMValues(currentRpm);
+        }
+
+        function stopAudioNodes() {
+            try {
+                if (mainOsc) mainOsc.stop();
+                if (subOsc) subOsc.stop();
+                if (noiseNode) noiseNode.stop();
+            } catch (e) {}
+        }
+
+        function toggleEngineSound() {
+            if (!isEngineRunning) {
+                startAudioNodes();
+                isEngineRunning = true;
+                updateAudioUI(true);
+            } else {
+                stopAudioNodes();
+                isEngineRunning = false;
+                updateAudioUI(false);
+            }
+        }
+
+        function updateRPMValues(rpm) {
+            currentRpm = rpm;
+            if (!isEngineRunning || !mainOsc || !audioCtx) return;
+
+            if (currentEngineType === 'boxer') {
+                const firingFreq = (rpm / 60) * 1.5; 
+                mainOsc.frequency.setTargetAtTime(firingFreq, audioCtx.currentTime, 0.04);
+                subOsc.frequency.setTargetAtTime(firingFreq / 2, audioCtx.currentTime, 0.04);
+
+                const cutoff = 150 + (rpm / 4500) * 600;
+                filterNode.frequency.setTargetAtTime(cutoff, audioCtx.currentTime, 0.04);
+
+            } else {
+                const firingFreq = (rpm / 60) * 2.0;
+                mainOsc.frequency.setTargetAtTime(firingFreq, audioCtx.currentTime, 0.03);
+                subOsc.frequency.setTargetAtTime(firingFreq / 2, audioCtx.currentTime, 0.03);
+
+                const cutoff = 300 + (rpm / 4500) * 1200;
+                filterNode.frequency.setTargetAtTime(cutoff, audioCtx.currentTime, 0.03);
+            }
+        }
+
+        function updateRPM(val) {
+            const rpmEl = document.getElementById('rpmValue');
+            if(rpmEl) rpmEl.innerText = `${val} RPM`;
+            updateRPMValues(parseInt(val, 10));
+        }
+
+        function updateAudioUI(running) {
+            const btnText = document.getElementById('audioText');
+            const btnIcon = document.getElementById('audioIcon');
+            const simText = document.getElementById('simBtnText');
+            const simIcon = document.getElementById('simIcon');
+
+            if (running) {
+                if(btnText) btnText.innerText = 'Desligar Motor';
+                if(btnIcon) btnIcon.className = 'fa-solid fa-volume-high';
+                if(simText) simText.innerText = 'Desligar Motor';
+                if(simIcon) simIcon.className = 'fa-solid fa-power-off';
+            } else {
+                if(btnText) btnText.innerText = 'Som do Motor';
+                if(btnIcon) btnIcon.className = 'fa-solid fa-volume-xmark';
+                if(simText) simText.innerText = 'Ligar Motor';
+                if(simIcon) simIcon.className = 'fa-solid fa-power-off';
+            }
+        }
+
+        // --- STREAMING_CHUNK:Attaching window load event listener... ---
+        window.addEventListener('DOMContentLoaded', () => {
+            renderModels('all');
+            renderTimeline('all');
+            renderColors();
+            selectColor(0);
+            populateComparator();
+        });
+    </script>
+</body>
+</html>
